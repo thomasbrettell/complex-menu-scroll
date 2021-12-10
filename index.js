@@ -1,14 +1,15 @@
-function getUrlVars()
-{
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
+function getUrlVars() {
+  var vars = [],
+    hash;
+  var hashes = window.location.href
+    .slice(window.location.href.indexOf('?') + 1)
+    .split('&');
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
 }
 
 const ARTICLES_AMOUNT = 50;
@@ -35,8 +36,10 @@ for (let i = 0; i < 50; i++) {
   createArticle($mainContent);
 }
 
-const sideContentLength = getUrlVars().amount ? parseInt(getUrlVars().amount) : 4
-console.log(sideContentLength)
+const sideContentLength = getUrlVars().amount
+  ? parseInt(getUrlVars().amount)
+  : 4;
+console.log(sideContentLength);
 for (let i = 0; i < sideContentLength; i++) {
   createSideItem($sideContent, i);
 }
@@ -52,7 +55,7 @@ const DIST_TOP_AND_SIDE = 65;
 const DIST_BOT_AND_SIDE = 75;
 
 const onScroll = () => {
-  if($sideContent.height() < $window.height()) return
+  if ($sideContent.height() < $window.height()) return;
   const scrollPos = $window.scrollTop();
   const scrollOffsetTop = $sideContent.offset().top;
   const scrollPosBotRelative = scrollPos + $window.height();
@@ -75,7 +78,10 @@ const onScroll = () => {
       });
     }
 
-    if (scrollPosBotRelative - DIST_BOT_AND_SIDE >= sideContentHeight + scrollOffsetTop) {
+    if (
+      scrollPosBotRelative - DIST_BOT_AND_SIDE >=
+      sideContentHeight + scrollOffsetTop
+    ) {
       const heightDifference =
         $window.height() - sideContentHeight - DIST_BOT_AND_SIDE;
       $sideContent.css({
