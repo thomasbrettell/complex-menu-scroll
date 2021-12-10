@@ -75,7 +75,7 @@ const onScroll = () => {
       });
     }
 
-    if (scrollPosBotRelative >= sideContentHeight + scrollOffsetTop - DIST_TOP_AND_SIDE) {
+    if (scrollPosBotRelative - DIST_BOT_AND_SIDE >= sideContentHeight + scrollOffsetTop) {
       const heightDifference =
         $window.height() - sideContentHeight - DIST_BOT_AND_SIDE;
       $sideContent.css({
