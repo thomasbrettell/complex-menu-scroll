@@ -9,12 +9,23 @@ header {
   height: 63px;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 100;
+  transition: top .2s ease-in-out;
+  top: 0;
+
+  &.up {
+    top: -65px;
+  }
 }
 
 main {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+  padding-top: 65px;
 
   .position-main {
     display: flex;

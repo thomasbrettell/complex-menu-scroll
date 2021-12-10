@@ -16,6 +16,7 @@ const ARTICLES_AMOUNT = 50;
 const $mainContent = $('#main-content');
 const $sideContent = $('#side-content');
 const $window = $(window);
+const $header = $('header');
 
 const createArticle = (root) => {
   const article = document.createElement('div');
@@ -68,6 +69,7 @@ const onScroll = () => {
     if (currentDirect !== prevScrollDirection) {
       prevScrollDirection = currentDirect;
       console.log('scrolling down');
+      $header.addClass('up');
 
       const heightDifference = scrollOffsetTop - DIST_TOP_AND_SIDE;
 
@@ -96,6 +98,7 @@ const onScroll = () => {
     if (currentDirect !== prevScrollDirection) {
       prevScrollDirection = currentDirect;
       console.log('scrolling up');
+      $header.removeClass('up');
 
       $sideContent.css({
         position: 'relative',
@@ -107,10 +110,10 @@ const onScroll = () => {
       });
     }
 
-    if (scrollOffsetTop >= scrollPos) {
+    if (scrollOffsetTop >= scrollPos + 65) {
       $sideContent.css({
         position: 'sticky',
-        top: '0px',
+        top: '65px',
         'margin-top': '0px',
       });
     }
