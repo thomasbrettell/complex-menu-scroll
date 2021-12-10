@@ -69,8 +69,6 @@ const onScroll = () => {
     if (currentDirect !== prevScrollDirection) {
       prevScrollDirection = currentDirect;
       console.log('scrolling down');
-      $header.addClass('up');
-
       const heightDifference = scrollOffsetTop - DIST_TOP_AND_SIDE;
 
       $sideContent.css({
@@ -78,6 +76,10 @@ const onScroll = () => {
         top: '0px',
         'margin-top': `${heightDifference}px`,
       });
+    }
+
+    if(scrollPos > 65 && !$header.hasClass('up')) {
+      $header.addClass('up');
     }
 
     if (
