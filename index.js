@@ -60,7 +60,6 @@ const onScroll = () => {
   const scrollOffsetTop = $sideContent.offset().top;
   const scrollPosBotRelative = scrollPos + $window.height();
   const sideContentHeight = $sideContent.height();
-  const distTopAndSide = scrollPosBotRelative - sideContentHeight;
 
   if (scrollPos > prevScrollPos) {
     const currentDirect = DOWN_SCROLL;
@@ -100,10 +99,7 @@ const onScroll = () => {
       $sideContent.css({
         position: 'relative',
         top: '0px',
-        'margin-top': `${Math.max(
-          distTopAndSide - (DIST_TOP_AND_SIDE + DIST_BOT_AND_SIDE),
-          0
-        )}px`,
+        'margin-top': `${Math.max(scrollOffsetTop - DIST_TOP_AND_SIDE, 0)}px`,
       });
     }
 
